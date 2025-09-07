@@ -140,7 +140,7 @@ function App() {
   const addNewPlot = async () => {
     try {
       console.log('Adding new plot...');
-      const response = await fetch('${API_BASE_URL}/plots', {
+      const response = await fetch(`${API_BASE_URL}/plots`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
