@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Analytics from './Analytics';
 
+const API_BASE_URL = 'https://smart-farm-project-management-production.up.railway.app/api';
+
 function App() {
   const [plots, setPlots] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ function App() {
   const fetchPlots = async () => {
     try {
       console.log('Fetching plots from backend...');
-      const response = await fetch('http://localhost:3001/api/plots');
+      const response = await fetch(`${API_BASE_URL}/plots`);
       const data = await response.json();
       console.log('Received data:', data);
       setPlots(data.plots);
@@ -32,7 +34,7 @@ function App() {
   const waterPlot = async (plotId) => {
     try {
       console.log(`Watering plot ${plotId}...`);
-      const response = await fetch(`http://localhost:3001/api/plots/${plotId}/water`, {
+      const response = await fetch(`${API_BASE_URL}/plots/${plotId}/water`, {
         method: 'PATCH'
       });
       
@@ -53,7 +55,7 @@ function App() {
   const harvestPlot = async (plotId) => {
     try {
       console.log(`Harvesting plot ${plotId}...`);
-      const response = await fetch(`http://localhost:3001/api/plots/${plotId}/harvest`, {
+      const response = await fetch(`${API_BASE_URL}/plots/${plotId}/harvest`, {
         method: 'PATCH'
       });
       
@@ -79,7 +81,7 @@ function App() {
   const fertilizePlot = async (plotId) => {
     try {
       console.log(`Fertilizing plot ${plotId}...`);
-      const response = await fetch(`http://localhost:3001/api/plots/${plotId}/fertilize`, {
+      const response = await fetch(`${API_BASE_URL}/plots/${plotId}/fertilize`, {
         method: 'PATCH'
       });
       
@@ -102,7 +104,7 @@ function App() {
   const plantCrop = async (plotId, cropType) => {
     try {
       console.log(`Planting ${cropType} in plot ${plotId}...`);
-      const response = await fetch(`http://localhost:3001/api/plots/${plotId}/plant`, {
+      const response = await fetch(`${API_BASE_URL}/plots/${plotId}/plant`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -138,7 +140,7 @@ function App() {
   const addNewPlot = async () => {
     try {
       console.log('Adding new plot...');
-      const response = await fetch('http://localhost:3001/api/plots', {
+      const response = await fetch('${API_BASE_URL}/plots', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -168,7 +170,7 @@ function App() {
     
     try {
       console.log(`Deleting plot ${plotId}...`);
-      const response = await fetch(`http://localhost:3001/api/plots/${plotId}`, {
+      const response = await fetch(`${API_BASE_URL}/plots/${plotId}`, {
         method: 'DELETE'
       });
       
