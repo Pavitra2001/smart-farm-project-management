@@ -68,11 +68,11 @@ app.patch('/api/plots/:id/harvest', (req, res) => {
   console.log(`📊 Before harvest:`, plot);
   
   // Reset plot after harvest
-  plot.status = 'Empty';
-  plot.cropType = 'None';
+  plot.status = 'empty';
+  plot.cropType = 'none';
+  plot.lastWatered = 'never';
   plot.growthProgress = 0;
   plot.needsAttention = true; // Needs replanting
-  plot.lastWatered = 'Never';
   
   console.log(`✅ After harvest:`, plot);
   
@@ -97,7 +97,7 @@ app.patch('/api/plots/:id/harvest', (req, res) => {
     }
 
     // Check if plot has crops to fertilize
-    if (plot.status === 'Empty' || plot.cropType === 'none') {
+    if (plot.status === 'empty' || plot.cropType === 'none') {
       console.log(`❌ Plot ${plotId} is empty - nothing to fertilize`);
       return res.status(400).json({ error: 'Cannot fertilize empty plot' });
     }
@@ -139,7 +139,7 @@ app.patch('/api/plots/:id/harvest', (req, res) => {
     }
 
     // Check if plot is empty
-    if (plot.status !== 'Empty') {
+    if (plot.status !== 'empty') {
       console.log(`❌ Plot ${plotId} is not empty`);
       return res.status(400).json({ error: 'Plot is not empty - harvest first' });
     }
@@ -154,7 +154,7 @@ app.patch('/api/plots/:id/harvest', (req, res) => {
     
     // Plant the new crop
     plot.cropType = cropType.toLowerCase();
-    plot.status = 'Planted';
+    plot.status = 'planted';
     plot.growthProgress = 10; // Start with some initial growth
     plot.lastWatered = new Date().toISOString().split('T')[0]; // Today
     plot.needsAttention = false; // Just planted, no immediate attention needed
