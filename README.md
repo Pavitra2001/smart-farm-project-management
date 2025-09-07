@@ -2,9 +2,9 @@
 A web-based dashboard for managing farm plots, crops, and agricultural activities. This system allows farmers to track plot status, manage crop lifecycles, and view analytics through an intuitive interface.
 
 # Live Demo
-Application: https://smart-farm-project-management-7en9ov1kd.vercel.app/
-Backend API: https://smart-farm-project-management-production.up.railway.app/api/plots
-GitHub Repository: https://github.com/Pavitra2001/smart-farm-project-management
+- Application: https://smart-farm-project-management-7en9ov1kd.vercel.app/
+- Backend API: https://smart-farm-project-management-production.up.railway.app/api/plots
+- GitHub Repository: https://github.com/Pavitra2001/smart-farm-project-management
 
 <img width="1904" height="633" alt="image" src="https://github.com/user-attachments/assets/c6b12279-dece-4729-9b01-9fc9d099c184" />
 
